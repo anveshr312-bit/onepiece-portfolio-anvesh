@@ -43,13 +43,12 @@ export default function Zone3_Poneglyphs() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     // Positions for hover titles corresponding to the 2x2 grid
-    // 0: Top Left, 1: Top Right, 2: Bottom Left, 3: Bottom Right
-    // Adjusted to be slightly more centered initially to support "slide out" animation
+    // Adjusted to be to the RIGHT of each Poneglyph
     const hoverPositions = [
-        "top-[30%] left-[20%]",   // 0
-        "top-[30%] right-[20%]",  // 1
-        "bottom-[30%] left-[20%]",// 2
-        "bottom-[30%] right-[20%]" // 3
+        "top-[25%] left-[35%]",   // 0: Top Left -> Right of it
+        "top-[25%] left-[80%]",   // 1: Top Right -> Right of it
+        "bottom-[25%] left-[35%]",// 2: Bottom Left -> Right of it
+        "bottom-[25%] left-[80%]" // 3: Bottom Right -> Right of it
     ];
 
     return (
@@ -60,9 +59,10 @@ export default function Zone3_Poneglyphs() {
                 {selectedIndex === null && hoveredIndex !== null && (
                     <motion.div
                         key="hover-heading"
-                        initial={{ opacity: 0, x: -50, scale: 0.8 }}
+                        // Slide from left (-100px) to 0. Starts "behind" the poneglyph (since z-index is 0)
+                        initial={{ opacity: 0, x: -100, scale: 0.8 }}
                         animate={{ opacity: 1, x: 0, scale: 1 }}
-                        exit={{ opacity: 0, x: 20, scale: 0.9 }}
+                        exit={{ opacity: 0, x: -50, scale: 0.9 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         className={`absolute z-0 pointer-events-none ${hoverPositions[hoveredIndex]}`}
                     >
@@ -86,16 +86,16 @@ export default function Zone3_Poneglyphs() {
             <AnimatePresence>
                 {selectedIndex === null && (
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.5 }}
-                        className="absolute top-10 md:top-20 z-20 pointer-events-none w-full text-center"
+                        className="absolute inset-0 z-20 pointer-events-none flex flex-col items-center justify-center"
                     >
-                        <h2 className="text-4xl md:text-6xl font-heading text-red-500 drop-shadow-[0_0_10px_rgba(255,0,0,0.5)] uppercase tracking-widest">
+                        <h2 className="text-4xl md:text-6xl font-heading text-red-500 drop-shadow-[0_0_10px_rgba(255,0,0,0.5)] uppercase tracking-widest text-center">
                             The Poneglyphs
                         </h2>
-                        <p className="text-white/50 font-serif mt-2">Click a stone to decipher</p>
+                        <p className="text-white/50 font-serif mt-2 text-center">Click a stone to decipher</p>
                     </motion.div>
                 )}
             </AnimatePresence>
