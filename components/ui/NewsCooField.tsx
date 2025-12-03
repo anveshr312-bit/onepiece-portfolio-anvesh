@@ -11,7 +11,7 @@ type Props = {
 
 const CONFIG = {
     // Number of birds to spawn if not specified in props
-    DEFAULT_COUNT: 18,
+    DEFAULT_COUNT: 12,
     // Total width of the flight area (pixels)
     SPREAD: 20000,
 
@@ -126,7 +126,7 @@ export default function NewsCooField({ count = CONFIG.DEFAULT_COUNT, spread = CO
                 /* Body image: use file from Next.js public folder */
                 const bodyImg = document.createElement("img");
                 bodyImg.className = "nc-body-img";
-                bodyImg.src = "/images/coo.png"; // <<-- your path in public folder
+                bodyImg.src = "/images/coo.webp"; // <<-- your path in public folder
                 bodyImg.alt = "news-coo";
 
                 /* SVG wing markup (tuned for pivot and simple shape). We will inject these inline so pivots are consistent. */

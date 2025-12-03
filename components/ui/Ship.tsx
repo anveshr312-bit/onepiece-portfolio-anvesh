@@ -6,7 +6,7 @@ export default function Ship({ className }: { className?: string }) {
         <div className={`relative ${className}`}>
             <div className="relative w-full h-full z-10">
                 <Image
-                    src="/images/sunny.png"
+                    src="/images/sunny.webp"
                     alt="Thousand Sunny"
                     fill
                     className="object-contain drop-shadow-2xl"
@@ -23,7 +23,7 @@ export default function Ship({ className }: { className?: string }) {
                 }}
             >
                 <Image
-                    src="/images/sunny.png"
+                    src="/images/sunny.webp"
                     alt="Reflection"
                     fill
                     className="object-contain blur-[2px]"

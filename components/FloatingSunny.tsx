@@ -31,7 +31,7 @@ export default function FloatingSunny() {
         >
             <div className="relative w-38 h-38 md:w-54 md:h-54">
                 <Image
-                    src="/images/sunny.png"
+                    src="/images/sunny.webp"
                     alt="Thousand Sunny"
                     fill
                     className="object-contain drop-shadow-2xl"
@@ -48,7 +48,7 @@ export default function FloatingSunny() {
                 }}
             >
                 <Image
-                    src="/images/sunny.png"
+                    src="/images/sunny.webp"
                     alt="Reflection"
                     fill
                     className="object-contain blur-[2px]"

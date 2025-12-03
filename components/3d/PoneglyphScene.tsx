@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { STLLoader } from "three-stdlib";
+import { GLTFLoader } from "three-stdlib";
 import { EffectComposer, RenderPass, UnrealBloomPass } from "three-stdlib";
 
 // ==========================================
@@ -84,10 +84,13 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
         const pointer = new THREE.Vector2();
 
         // Load STL
-        const loader = new STLLoader();
+        // Load GLB
+        const loader = new GLTFLoader();
         const instances: THREE.Mesh[] = [];
 
-        loader.load('/models/red-poneglyph.stl', (geometry) => {
+        loader.load('/models/red-poneglyph.glb', (gltf: any) => {
+            const mesh = gltf.scene.children[0] as THREE.Mesh;
+            const geometry = mesh.geometry;
             geometry.computeBoundingBox();
             geometry.center();
             geometry.computeVertexNormals();
@@ -115,13 +118,23 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
                 scene.add(m);
                 instances.push(m);
             }
-        }, undefined, (err) => {
-            console.error('STL load error', err);
+        }, undefined, (err: any) => {
+            console.error('GLB load error', err);
         });
 
         // Animation variables
         let t = 0;
         let animationFrameId: number;
+        let isVisible = true;
+
+        // Intersection Observer to pause rendering when off-screen
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isVisible = entry.isIntersecting;
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(root);
 
         const onPointerMove = (e: PointerEvent) => {
             if (!root) return;
@@ -152,6 +165,9 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
 
         const animate = () => {
             animationFrameId = requestAnimationFrame(animate);
+
+            if (!isVisible) return; // Skip rendering if not visible
+
             t += 0.01;
 
             const currentSelected = selectedIndexRef.current;
@@ -273,6 +289,7 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
             window.removeEventListener('resize', handleResize);
             root.removeEventListener('pointermove', onPointerMove);
             root.removeEventListener('pointerdown', onPointerDown);
+            observer.disconnect();
             cancelAnimationFrame(animationFrameId);
             if (root.contains(renderer.domElement)) {
                 root.removeChild(renderer.domElement);

@@ -48,18 +48,26 @@ export default function HorizontalScrollContainer({
     };
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            if (containerRef.current) {
-                const width = window.innerWidth;
-                const scrollLeft = containerRef.current.scrollLeft;
-                const zone = Math.round(scrollLeft / width);
-                setCurrentZone(zone);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (containerRef.current) {
+                        const width = window.innerWidth;
+                        const scrollLeft = containerRef.current.scrollLeft;
+                        const zone = Math.round(scrollLeft / width);
+                        setCurrentZone(zone);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
         const ref = containerRef.current;
         if (ref) {
-            ref.addEventListener("scroll", handleScroll);
+            ref.addEventListener("scroll", handleScroll, { passive: true });
             return () => ref.removeEventListener("scroll", handleScroll);
         }
     }, []);
@@ -68,7 +76,8 @@ export default function HorizontalScrollContainer({
         <ScrollContext.Provider value={{ scrollXProgress: smoothProgress, scrollToZone, currentZone }}>
             <div className="h-screen w-screen overflow-hidden bg-sky-300 relative">
                 {/* Fixed Elements (Children) */}
-                {children}
+                {children as any}
+
 
                 {/* Scroll Container */}
                 <div

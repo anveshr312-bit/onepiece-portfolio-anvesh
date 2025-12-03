@@ -31,7 +31,7 @@ export default function Zone1_Hero() {
                     >
                         {/* Logo replacing text */}
                         <img
-                            src="/images/logo.png"
+                            src="/images/logo.webp"
                             alt="Anvesh Rathore Logo"
                             className="h-32 md:h-48 w-auto mb-4 object-contain"
                         />
