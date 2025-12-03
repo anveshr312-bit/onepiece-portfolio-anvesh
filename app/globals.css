@@ -1,0 +1,510 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Outfit", sans-serif;
+  --font-hand: "Cedarville Cursive", cursive;
+
+  --color-ocean-50: #f0f9ff;
+  --color-ocean-100: #e0f2fe;
+  --color-ocean-200: #bae6fd;
+  --color-ocean-300: #7dd3fc;
+  --color-ocean-400: #38bdf8;
+  --color-ocean-500: #0ea5e9;
+  --color-ocean-600: #0284c7;
+  --color-ocean-700: #0369a1;
+  --color-ocean-800: #075985;
+  --color-ocean-900: #0c4a6e;
+  --color-ocean-950: #082f49;
+  --color-deep: #0a192f;
+
+  --color-gold-DEFAULT: #fbbf24;
+  --color-gold-light: #fcd34d;
+  --color-gold-dark: #d97706;
+
+  --color-parchment: #fdfbf7;
+  --color-wood: #78350f;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-drift: drift 20s linear infinite;
+  --animate-wave: wave 10s linear infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Handled by HorizontalScrollContainer */
+  background-color: #87CEEB;
+  /* Sky blue fallback */
+}
+
+/* Custom Utilities */
+.no-drag {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.snap-x-mandatory {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* News Coo Birds */
+/* NewsCoo visual styles (paste into globals.css or a module) */
+.news-coo-container {
+  position: absolute;
+  pointer-events: auto;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: visible;
+  animation: nc-bob 6s ease-in-out infinite;
+}
+
+/* inner wrapper (flying transforms are applied here) */
+.nc-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Use your PNG for body */
+.nc-body-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 75%;
+  /* Increased size */
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  /* Between wings */
+  pointer-events: none;
+  image-rendering: auto;
+}
+
+/* SVG wing wrappers (we inject inline SVG inside these) */
+.nc-wing-svg {
+  position: absolute;
+  top: 50%;
+  width: 60%;
+  /* Decreased size */
+  height: auto;
+  transform: translateY(-50%) rotate(0deg);
+  /* z-index removed from base, handled in left/right */
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.12s linear;
+  overflow: visible;
+}
+
+/* left vs right placement and pivot */
+.nc-wing-svg.left {
+  left: 8%;
+  z-index: 1;
+  /* Behind body */
+  transform-origin: 85% 35%;
+  animation: flap-left var(--bspd, 1.6s) ease-in-out infinite var(--bdel, 0s);
+}
+
+.nc-wing-svg.right {
+  right: 8%;
+  z-index: 3;
+  /* In front of body */
+  transform-origin: 15% 35%;
+  animation: flap-right var(--bspd, 1.6s) ease-in-out infinite var(--bdel, 0s);
+}
+
+/* Flap keyframes, mirrored */
+@keyframes flap-right {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  30% {
+    transform: translateY(-50%) rotate(28deg);
+  }
+
+  60% {
+    transform: translateY(-50%) rotate(8deg);
+  }
+
+  100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+
+@keyframes flap-left {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  30% {
+    transform: translateY(-50%) rotate(-28deg);
+  }
+
+  60% {
+    transform: translateY(-50%) rotate(-8deg);
+  }
+
+  100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+
+/* Pause wings while flying-away (so global transform doesn't compound with wing animation) */
+.nc-inner.flying-away .nc-wing-svg {
+  animation-play-state: paused;
+}
+
+/* gentle bob for idle birds */
+@keyframes nc-bob {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* rendering helpers */
+.news-coo-container,
+.nc-inner,
+.nc-wing-svg,
+.nc-body-img {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Cartoon Clouds */
+.cloud-container {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+  animation: cloud-drift var(--drift-duration, 30s) linear infinite var(--drift-delay, 0s);
+}
+
+.cloud-puff {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 100px;
+  position: relative;
+  opacity: 0.5;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.05);
+}
+
+.cloud-puff::after,
+.cloud-puff::before {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud-puff::after {
+  width: 50%;
+  height: 80%;
+  top: -40%;
+  left: 15%;
+}
+
+.cloud-puff::before {
+  width: 40%;
+  height: 70%;
+  top: -30%;
+  right: 15%;
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* FOG ANIMATION */
+.fogwrapper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+}
+
+#foglayer_01 {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+  -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+}
+
+#foglayer_01 .image01,
+#foglayer_01 .image02 {
+  background: url("/images/fog1.png") repeat-x top left transparent;
+  background-size: 100%;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#foglayer_02 {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: foglayer_02_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+  -webkit-animation: foglayer_01_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+}
+
+#foglayer_02 .image01,
+#foglayer_02 .image02 {
+  background: url("/images/fog2.png") repeat-x top left transparent;
+  background-size: 100%;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#foglayer_03 {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: foglayer_02_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+  -webkit-animation: foglayer_01_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+}
+
+#foglayer_03 .image01,
+#foglayer_03 .image02 {
+  background: url("/images/fog2.png") repeat-x top left transparent;
+  background-size: 100%;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+@keyframes foglayer_01_opacity {
+  0% {
+    opacity: .1;
+  }
+
+  22% {
+    opacity: .5;
+  }
+
+  40% {
+    opacity: .28;
+  }
+
+  58% {
+    opacity: .4;
+  }
+
+  80% {
+    opacity: .16;
+  }
+
+  100% {
+    opacity: .1;
+  }
+}
+
+@-webkit-keyframes foglayer_01_opacity {
+  0% {
+    opacity: .1;
+  }
+
+  22% {
+    opacity: .5;
+  }
+
+  40% {
+    opacity: .28;
+  }
+
+  58% {
+    opacity: .4;
+  }
+
+  80% {
+    opacity: .16;
+  }
+
+  100% {
+    opacity: .1;
+  }
+}
+
+@keyframes foglayer_02_opacity {
+  0% {
+    opacity: .5;
+  }
+
+  25% {
+    opacity: .2;
+  }
+
+  50% {
+    opacity: .1;
+  }
+
+  80% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: .5;
+  }
+}
+
+@-webkit-keyframes foglayer_02_opacity {
+  0% {
+    opacity: .5;
+  }
+
+  25% {
+    opacity: .2;
+  }
+
+  50% {
+    opacity: .1;
+  }
+
+  80% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: .5;
+  }
+}
+
+@keyframes foglayer_03_opacity {
+  0% {
+    opacity: .8;
+  }
+
+  27% {
+    opacity: .2;
+  }
+
+  52% {
+    opacity: .6;
+  }
+
+  68% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: .8;
+  }
+}
+
+@-webkit-keyframes foglayer_03_opacity {
+  0% {
+    opacity: .8;
+  }
+
+  27% {
+    opacity: .2;
+  }
+
+  52% {
+    opacity: .6;
+  }
+
+  68% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: .8;
+  }
+}
+
+@keyframes foglayer_moveme {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
+}
+
+@-webkit-keyframes foglayer_moveme {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -100%;
+  }
+}
