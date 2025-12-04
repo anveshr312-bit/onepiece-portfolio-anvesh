@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PoneglyphScene from "../3d/PoneglyphScene";
 import { X } from "lucide-react";
+import DecipherText from "../ui/DecipherText";
 
 const poneglyphs = [
     {
@@ -52,7 +53,7 @@ export default function Zone3_Poneglyphs() {
     ];
 
     return (
-        <section className="h-screen w-screen flex-shrink-0 relative flex items-center justify-center snap-center overflow-hidden bg-[#071018]">
+        <section className="h-screen w-screen flex-shrink-0 relative flex items-center justify-center snap-center overflow-hidden bg-zone-3">
 
             {/* Hover Heading Overlay - Z-Index 0 (Behind Scene) */}
             <AnimatePresence>
@@ -64,7 +65,7 @@ export default function Zone3_Poneglyphs() {
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         exit={{ opacity: 0, x: -50, scale: 0.9 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className={`absolute z-0 pointer-events-none ${hoverPositions[hoveredIndex]}`}
+                        className={`absolute pointer-events-none ${hoverPositions[hoveredIndex]}`}
                     >
                         <h3 className={`text-4xl font-heading font-bold ${poneglyphs[hoveredIndex].color} drop-shadow-lg bg-black/40 px-6 py-3 rounded-lg backdrop-blur-md border border-white/5`}>
                             {poneglyphs[hoveredIndex].title}
@@ -104,57 +105,64 @@ export default function Zone3_Poneglyphs() {
             <AnimatePresence>
                 {selectedIndex !== null && (
                     <motion.div
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 100 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="absolute right-0 top-0 h-full w-full md:w-1/2 bg-gradient-to-l from-black/90 via-black/80 to-transparent z-30 flex flex-col justify-center p-8 md:p-16"
+                        initial={{ opacity: 0, x: -50, clipPath: "inset(0 100% 0 0)" }} // Start clipped from right
+                        animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }} // Reveal to full width
+                        exit={{ opacity: 0, x: -20, clipPath: "inset(0 100% 0 0)" }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="absolute right-0 top-0 h-full w-full md:w-1/2 z-30 flex flex-col justify-center p-8 md:p-16 pointer-events-none"
                     >
-                        <button
-                            onClick={() => setSelectedIndex(null)}
-                            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"
-                        >
-                            <X size={32} />
-                        </button>
+                        {/* Background Gradient - Localized to text area for better readability but not full screen */}
+                        <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/60 to-transparent -z-10" />
 
-                        <div className={`border-l-4 pl-6 ${poneglyphs[selectedIndex].borderColor}`}>
-                            <motion.span
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.2 }}
-                                className="text-sm uppercase tracking-[0.2em] text-white/40 mb-2 block"
+                        <div className="pointer-events-auto">
+                            <button
+                                onClick={() => setSelectedIndex(null)}
+                                className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors"
                             >
-                                {poneglyphs[selectedIndex].status}
-                            </motion.span>
+                                <X size={32} />
+                            </button>
 
-                            <motion.h3
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.3 }}
-                                className={`text-4xl md:text-6xl font-heading font-bold mb-6 ${poneglyphs[selectedIndex].color} drop-shadow-lg`}
-                            >
-                                {poneglyphs[selectedIndex].title}
-                            </motion.h3>
-
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.4 }}
-                                className="text-lg md:text-xl font-serif text-white/80 leading-relaxed max-w-lg"
-                            >
-                                {poneglyphs[selectedIndex].text}
-                            </motion.p>
-
-                            {poneglyphs[selectedIndex].dim && (
+                            <div className={`border-l-4 pl-6 ${poneglyphs[selectedIndex].borderColor}`}>
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.6 }}
-                                    className="mt-8 p-4 bg-red-900/10 border border-red-900/30 rounded text-red-400/60 font-mono text-xs"
+                                    transition={{ delay: 0.2 }}
+                                    className="text-sm uppercase tracking-[0.2em] text-white/40 mb-2 block"
                                 >
-                                    // ENCRYPTED DATA // TRANSLATION INCOMPLETE //
+                                    <DecipherText
+                                        text={poneglyphs[selectedIndex].status}
+                                        revealSpeed={10}
+                                        startDelay={200}
+                                    />
                                 </motion.div>
-                            )}
+
+                                <h3 className={`text-4xl md:text-6xl font-heading font-bold mb-6 ${poneglyphs[selectedIndex].color} drop-shadow-lg`}>
+                                    <DecipherText
+                                        text={poneglyphs[selectedIndex].title}
+                                        revealSpeed={15}
+                                        startDelay={300}
+                                    />
+                                </h3>
+
+                                <div className="text-lg md:text-xl font-serif text-white/80 leading-relaxed max-w-lg min-h-[100px]">
+                                    <DecipherText
+                                        text={poneglyphs[selectedIndex].text}
+                                        revealSpeed={5}
+                                        startDelay={500}
+                                    />
+                                </div>
+
+                                {poneglyphs[selectedIndex].dim && (
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 2.5 }}
+                                        className="mt-8 p-4 bg-red-900/10 border border-red-900/30 rounded text-red-400/60 font-mono text-xs"
+                                    >
+                                        // ENCRYPTED DATA // TRANSLATION INCOMPLETE //
+                                    </motion.div>
+                                )}
+                            </div>
                         </div>
                     </motion.div>
                 )}

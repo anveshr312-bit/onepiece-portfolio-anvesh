@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three-stdlib";
-import { EffectComposer, RenderPass, UnrealBloomPass } from "three-stdlib";
+
 
 // ==========================================
 // 🔧 EASY CONFIGURATION ZONE
@@ -54,6 +54,7 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setSize(root.clientWidth, root.clientHeight);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.setClearColor(0x000000, 0); // Force transparent background
         root.appendChild(renderer.domElement);
 
         const camera = new THREE.PerspectiveCamera(40, root.clientWidth / root.clientHeight, 0.1, 1000);
@@ -68,16 +69,7 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
 
         scene.add(new THREE.AmbientLight(0x202033, 0.6));
 
-        // Postprocessing
-        const composer = new EffectComposer(renderer);
-        const renderPass = new RenderPass(scene, camera);
-        composer.addPass(renderPass);
 
-        const bloomPass = new UnrealBloomPass(
-            new THREE.Vector2(root.clientWidth, root.clientHeight),
-            0.3, 0.6, 0.1
-        );
-        composer.addPass(bloomPass);
 
         // Raycaster
         const ray = new THREE.Raycaster();
@@ -125,16 +117,6 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
         // Animation variables
         let t = 0;
         let animationFrameId: number;
-        let isVisible = true;
-
-        // Intersection Observer to pause rendering when off-screen
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                isVisible = entry.isIntersecting;
-            });
-        }, { threshold: 0.1 });
-
-        observer.observe(root);
 
         const onPointerMove = (e: PointerEvent) => {
             if (!root) return;
@@ -165,8 +147,6 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
 
         const animate = () => {
             animationFrameId = requestAnimationFrame(animate);
-
-            if (!isVisible) return; // Skip rendering if not visible
 
             t += 0.01;
 
@@ -235,16 +215,15 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
                     // Highlight hit
                     const mat = hit.material as THREE.MeshStandardMaterial;
                     mat.emissive = new THREE.Color(SCENE_CONFIG.hoverColor);
-                    // Reduced intensity from 0.5 to 0.3
-                    mat.emissiveIntensity = THREE.MathUtils.lerp(mat.emissiveIntensity, 0.3, 0.18);
+                    // Reduced intensity for darker glow
+                    mat.emissiveIntensity = THREE.MathUtils.lerp(mat.emissiveIntensity, 0.15, 0.18);
 
                     // Slight scale up on hover
                     const targetHoverScale = SCENE_CONFIG.scale * 1.15;
                     hit.scale.lerp(new THREE.Vector3(targetHoverScale, targetHoverScale, targetHoverScale), 0.14);
                     hit.rotation.y += 0.05;
 
-                    // Reduced bloom strength from 0.4 to 0.2
-                    bloomPass.strength = THREE.MathUtils.lerp(bloomPass.strength, 0.2, 0.12);
+
                 }
             }
 
@@ -261,15 +240,15 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
                     // Keep selected one glowing slightly?
                     if (currentSelected === m.userData.id) {
                         mat.emissive = new THREE.Color(SCENE_CONFIG.hoverColor);
-                        mat.emissiveIntensity = THREE.MathUtils.lerp(mat.emissiveIntensity, 0.5, 0.1);
+                        // Match hover intensity for consistency
+                        mat.emissiveIntensity = THREE.MathUtils.lerp(mat.emissiveIntensity, 0.15, 0.1);
                     } else {
                         mat.emissiveIntensity = THREE.MathUtils.lerp(mat.emissiveIntensity, 0.0, 0.1);
                     }
                 });
-                bloomPass.strength = THREE.MathUtils.lerp(bloomPass.strength, 0.15, 0.06);
             }
 
-            composer.render();
+            renderer.render(scene, camera);
         };
 
         animate();
@@ -281,7 +260,7 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
             camera.aspect = w / h;
             camera.updateProjectionMatrix();
             renderer.setSize(w, h);
-            composer.setSize(w, h);
+
         };
         window.addEventListener('resize', handleResize);
 
@@ -289,7 +268,6 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
             window.removeEventListener('resize', handleResize);
             root.removeEventListener('pointermove', onPointerMove);
             root.removeEventListener('pointerdown', onPointerDown);
-            observer.disconnect();
             cancelAnimationFrame(animationFrameId);
             if (root.contains(renderer.domElement)) {
                 root.removeChild(renderer.domElement);

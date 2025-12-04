@@ -271,213 +271,21 @@ body {
   right: 15%;
 }
 
-@keyframes cloud-drift {
-  0% {
-    transform: translateX(0);
-  }
-
-  50% {
-    transform: translateX(20px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* FOG ANIMATION */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* News Coo Birds */
-/* NewsCoo visual styles (paste into globals.css or a module) */
-.news-coo-container {
-  position: absolute;
-  pointer-events: auto;
-  transform-style: preserve-3d;
-  will-change: transform;
-  overflow: visible;
-  animation: nc-bob 6s ease-in-out infinite;
-}
-
-/* inner wrapper (flying transforms are applied here) */
-.nc-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-origin: 50% 50%;
-  transition: transform 0.3s ease;
+.cloud-drift-slow {
+  animation: cloud-drift-slow 60s linear infinite;
   will-change: transform;
 }
 
-/* Use your PNG for body */
-.nc-body-img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 75%;
-  /* Increased size */
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  /* Between wings */
-  pointer-events: none;
-  image-rendering: auto;
-}
-
-/* SVG wing wrappers (we inject inline SVG inside these) */
-.nc-wing-svg {
-  position: absolute;
-  top: 50%;
-  width: 60%;
-  /* Decreased size */
-  height: auto;
-  transform: translateY(-50%) rotate(0deg);
-  /* z-index removed from base, handled in left/right */
-  pointer-events: none;
-  will-change: transform;
-  transition: transform 0.12s linear;
-  overflow: visible;
-}
-
-/* left vs right placement and pivot */
-.nc-wing-svg.left {
-  left: 8%;
-  z-index: 1;
-  /* Behind body */
-  transform-origin: 85% 35%;
-  animation: flap-left var(--bspd, 1.6s) ease-in-out infinite var(--bdel, 0s);
-}
-
-.nc-wing-svg.right {
-  right: 8%;
-  z-index: 3;
-  /* In front of body */
-  transform-origin: 15% 35%;
-  animation: flap-right var(--bspd, 1.6s) ease-in-out infinite var(--bdel, 0s);
-}
-
-/* Flap keyframes, mirrored */
-@keyframes flap-right {
+@keyframes cloud-drift-slow {
   0% {
-    transform: translateY(-50%) rotate(0deg);
-  }
-
-  30% {
-    transform: translateY(-50%) rotate(28deg);
-  }
-
-  60% {
-    transform: translateY(-50%) rotate(8deg);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateY(-50%) rotate(0deg);
+    transform: translate3d(-8%, 0, 0);
   }
 }
 
-@keyframes flap-left {
-  0% {
-    transform: translateY(-50%) rotate(0deg);
-  }
-
-  30% {
-    transform: translateY(-50%) rotate(-28deg);
-  }
-
-  60% {
-    transform: translateY(-50%) rotate(-8deg);
-  }
-
-  100% {
-    transform: translateY(-50%) rotate(0deg);
-  }
-}
-
-/* Pause wings while flying-away (so global transform doesn't compound with wing animation) */
-.nc-inner.flying-away .nc-wing-svg {
-  animation-play-state: paused;
-}
-
-/* gentle bob for idle birds */
-@keyframes nc-bob {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* rendering helpers */
-.news-coo-container,
-.nc-inner,
-.nc-wing-svg,
-.nc-body-img {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Cartoon Clouds */
-.cloud-container {
-  position: absolute;
-  pointer-events: none;
-  will-change: transform;
-  animation: cloud-drift var(--drift-duration, 30s) linear infinite var(--drift-delay, 0s);
-}
-
-.cloud-puff {
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  border-radius: 100px;
-  position: relative;
-  opacity: 0.5;
-  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.05);
-}
-
-.cloud-puff::after,
-.cloud-puff::before {
-  content: '';
-  position: absolute;
-  background: inherit;
-  border-radius: 50%;
-}
-
-.cloud-puff::after {
-  width: 50%;
-  height: 80%;
-  top: -40%;
-  left: 15%;
-}
-
-.cloud-puff::before {
-  width: 40%;
-  height: 70%;
-  top: -30%;
-  right: 15%;
-}
-
-@keyframes cloud-drift {
-  0% {
-    transform: translateX(0);
-  }
-
-  50% {
-    transform: translateX(20px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
 
 /* FOG ANIMATION */
 .fogwrapper {
@@ -697,5 +505,113 @@ body {
 
   100% {
     left: -100%;
+  }
+}
+
+/* ZONE 3: THE ANCIENT VOICE (GOD TIER) - FIXED VISIBILITY */
+.bg-zone-3 {
+  background-color: #020203;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  /* Force stacking context */
+}
+
+/* 1. The Deep Glow (Slow Rotating Ancient Aura) */
+.bg-zone-3::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background:
+    conic-gradient(from 0deg at 50% 50%,
+      rgba(0, 0, 0, 0) 0deg,
+      rgba(180, 20, 40, 0.4) 100deg,
+      /* Boosted Red */
+      rgba(0, 0, 0, 0) 180deg,
+      rgba(100, 40, 180, 0.3) 280deg,
+      /* Boosted Purple */
+      rgba(0, 0, 0, 0) 360deg);
+  filter: blur(80px);
+  /* Reduced blur slightly for more definition */
+  animation: ancient-spin 40s linear infinite;
+  z-index: -1;
+  /* Keep behind content but in local stack */
+  opacity: 1;
+}
+
+/* 2. The Lost Texture (Subtle Grain/Noise) */
+.bg-zone-3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  /* Boosted noise visibility */
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes ancient-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.amazon-particles {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(255, 230, 150, 0.9) 0px, rgba(255, 230, 150, 0.0) 6px);
+  pointer-events: none;
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  transform: translateZ(0);
+  animation: particle-move 9s linear infinite;
+  will-change: transform, opacity;
+  mask-image: radial-gradient(closest-side, #000 40%, transparent 70%);
+}
+
+/* The keyframe will shift the whole field; cheaper than animating each dot */
+@keyframes particle-move {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate3d(-6%, -4%, 0) scale(1.02);
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* reduce visual noise for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .amazon-particles {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .vapour span,
+  .amazon-particles,
+  .cloud-container,
+  .nc-inner,
+  .nc-wing-svg {
+    animation: none !important;
+    transition: none !important;
   }
 }
