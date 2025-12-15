@@ -10,7 +10,7 @@ const gears = [
         id: "GEAR 1",
         name: "Open-Mindedness",
         desc: "I actively seek feedback, consider alternative approaches, and adapt quickly when a better solution emerges.",
-        image: "/images/gear 1.png",
+        image: "/images/gear 1.webp",
         color: "from-blue-500 to-cyan-400",
         shadowColor: "#38bdf8",
         accent: "#0369a1",
@@ -19,7 +19,7 @@ const gears = [
         id: "GEAR 2",
         name: "Empathy",
         desc: "I try to understand users, teammates, and stakeholders before jumping to solutions, leading to more thoughtful and human-centered decisions.",
-        image: "/images/gear 2.png",
+        image: "/images/gear 2.webp",
         color: "from-red-500 to-pink-600",
         shadowColor: "#fb7185",
         accent: "#be123c",
@@ -28,7 +28,7 @@ const gears = [
         id: "GEAR 3",
         name: "Loyalty",
         desc: "I value consistency and responsibility, staying committed to the team and the work even when challenges slow things down.",
-        image: "/images/gear 3.png",
+        image: "/images/gear 3.webp",
         color: "from-orange-500 to-yellow-500",
         shadowColor: "#f97316",
         accent: "#b45309",
@@ -37,7 +37,7 @@ const gears = [
         id: "GEAR 4",
         name: "Creativity",
         desc: "I use creativity to simplify complex ideas, design engaging interfaces, and approach problems from unconventional angles.",
-        image: "/images/gear 4.png",
+        image: "/images/gear 4.webp",
         color: "from-purple-600 to-indigo-600",
         shadowColor: "#7c3aed",
         accent: "#6d28d9",
@@ -46,7 +46,7 @@ const gears = [
         id: "GEAR 5",
         name: "Freedom",
         desc: "I value autonomy and ownership, taking responsibility for my work while aligning with the goals and values of the team.",
-        image: "/images/gear 5.png",
+        image: "/images/gear 5.webp",
         color: "from-white to-yellow-200",
         shadowColor: "#fff9c4",
         accent: "#f59e0b",
@@ -278,7 +278,7 @@ export default function Zone4_Gears() {
                 {/* 1. Base Sky Gradient */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/zone4/amazonlily_sky_base.png"
+                        src="/images/zone4/amazonlily_sky_base.webp"
                         alt="Sky Background"
                         fill
                         className="object-cover"
@@ -293,7 +293,7 @@ export default function Zone4_Gears() {
                     transition={{ duration: 25, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
                 >
                     <Image
-                        src="/images/zone4/amazonlily_clouds_mid1.png"
+                        src="/images/zone4/amazonlily_clouds_mid1.webp"
                         alt="Clouds"
                         fill
                         className="object-cover opacity-50"
@@ -305,7 +305,7 @@ export default function Zone4_Gears() {
                     transition={{ duration: 35, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
                 >
                     <Image
-                        src="/images/zone4/amazonlily_clouds_mid2.png"
+                        src="/images/zone4/amazonlily_clouds_mid2.webp"
                         alt="Clouds"
                         fill
                         className="object-cover opacity-50"
@@ -315,7 +315,7 @@ export default function Zone4_Gears() {
                 {/* 3. Amazon Lily Silhouette (Static) */}
                 <div className="absolute bottom-0 left-0 right-0 h-[100%] z-40 pointer-events-none">
                     <Image
-                        src="/images/zone4/amazonlily_island_silhouette.png"
+                        src="/images/zone4/amazonlily_island_silhouette.webp"
                         alt="Amazon Lily"
                         fill
                         className="object-contain object-bottom opacity-70"
@@ -326,7 +326,7 @@ export default function Zone4_Gears() {
                 {/* 4. Water Reflection Strip */}
                 <div className="absolute bottom-0 left-0 right-0 h-[30%] z-25 pointer-events-none mix-blend-overlay opacity-60">
                     <Image
-                        src="/images/zone4/amazonlily_water_reflection.png"
+                        src="/images/zone4/amazonlily_water_reflection.webp"
                         alt="Water Reflection"
                         fill
                         className="object-cover object-bottom"
@@ -340,7 +340,7 @@ export default function Zone4_Gears() {
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 >
                     <Image
-                        src="/images/zone4/amazonlily_foreground_mist.png"
+                        src="/images/zone4/amazonlily_foreground_mist.webp"
                         alt="Mist"
                         fill
                         className="object-cover"
