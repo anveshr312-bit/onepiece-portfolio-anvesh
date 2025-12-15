@@ -1,5 +1,5 @@
 "use client";
-
+import type { TargetAndTransition } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { motion, useMotionValue, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -192,7 +192,7 @@ export default function Zone4_Gears() {
     const [activeGear, setActiveGear] = useState<string | null>(null);
 
     // --- Advanced Hover Animations ---
-    const getHoverAnimation = (id: string) => {
+    const getHoverAnimation = (id: string): TargetAndTransition => {
         switch (id) {
             case "GEAR 1":
                 return { y: -15, scale: 1.05, rotate: 1 };
@@ -210,7 +210,7 @@ export default function Zone4_Gears() {
                     y: -20,
                     scale: 1.15,
                     transition: {
-                        scale: { type: "spring", stiffness: 260, damping: 10 },
+                        scale: { type: "spring" as const, stiffness: 260, damping: 10 },
                         y: { duration: 0.3 }
                     }
                 };
