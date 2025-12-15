@@ -17,11 +17,7 @@ const projects = [
         image: "/images/zone8/poster_frame.png",
         links: {
             code: "https://github.com/anveshr312-bit/onepiece-portfolio-anvesh",
-<<<<<<< Updated upstream
-            live: "https://anveshrathore.netlify.app/"
-=======
-            live: "https://anveshrathore.netlify.app"
->>>>>>> Stashed changes
+            live: "https://anveshrathore.netlify.app",
         },
         logEntries: [
             {
