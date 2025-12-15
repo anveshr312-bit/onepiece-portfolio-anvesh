@@ -82,7 +82,7 @@ export default function Zone2_Prologue() {
                     </motion.div>
 
                     {/* Handwritten Story Content */}
-                    <div className="relative z-10 text-[#1a0f0a] font-hand text-xl md:text-2xl leading-relaxed drop-shadow-[0_1px_1px_rgba(255,255,255,0.2)] max-w-xl">
+                    <div className="relative z-10 text-[#1a0f0a] font-hand text-xl md:text-xl leading-relaxed drop-shadow-[0_1px_1px_rgba(255,255,255,0.2)] max-w-xl">
 
                         <div className="mb-2">
                             <p className="text-[#8b4513] font-serif font-bold text-sm tracking-widest uppercase mb-1 drop-shadow-sm">Captain's Log: Entry 01</p>
@@ -93,7 +93,7 @@ export default function Zone2_Prologue() {
 
                         <div className="mb-2">
                             <p>
-                                Currently sailing through 2nd Year, 2nd Semester.
+                                Currently in my second year, focused on building practical skills alongside core engineering subjects.
                             </p>
                         </div>
 
@@ -102,30 +102,36 @@ export default function Zone2_Prologue() {
                         <div className="mb-2">
                             <p className="text-[#8b4513] font-serif font-bold text-sm tracking-widest uppercase mb-1 drop-shadow-sm">Origin Coordinates</p>
                             <p>
-                                Before setting sail on this grand line, I completed my training at:
+                                Before stepping into engineering, I built my academic foundation here:
                             </p>
                         </div>
 
-                        <ul className="space-y-2 pl-2 border-l-2 border-gold/60 ml-2">
-                            <motion.li
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 5, duration: 0.5 }}
-                                className="flex items-center gap-3"
-                            >
-                                <span className="text-gold text-lg">⚓</span>
-                                <span className="text-lg md:text-xl">10th – Jawahar Navodaya Vidyalaya, Indore</span>
-                            </motion.li>
-                            <motion.li
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 6, duration: 0.5 }}
-                                className="flex items-center gap-3"
-                            >
-                                <span className="text-gold text-lg">⚓</span>
-                                <span className="text-lg md:text-xl">12th – Malwa Public Higher Secondary School, Depalpur</span>
-                            </motion.li>
+                        <ul className="space-y-4 pl-2 border-l-2 border-gold/60 ml-2">
+                            <li className="flex flex-col gap-1">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-gold text-lg">⚓</span>
+                                    <span className="text-lg md:text-xl font-bold">10th – Jawahar Navodaya Vidyalaya, Indore</span>
+                                </div>
+                                <p className="pl-8 text-base text-[#1a0f0a]/80 italic">
+                                    A disciplined academic environment that shaped my curiosity and work ethic.
+                                </p>
+                            </li>
+                            <li className="flex flex-col gap-1">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-gold text-lg">⚓</span>
+                                    <span className="text-lg md:text-xl font-bold">12th – Malwa Public Higher Secondary School, Depalpur</span>
+                                </div>
+                                <p className="pl-8 text-base text-[#1a0f0a]/80 italic">
+                                    Strengthened my interest in technology and problem-solving.
+                                </p>
+                            </li>
                         </ul>
+
+                        <div className="mt-4">
+                            <p>
+                                "This portfolio is a record of what I’m learning, building, and improving as I prepare for real-world engineering challenges."
+                            </p>
+                        </div>
                     </div>
                 </div>
 

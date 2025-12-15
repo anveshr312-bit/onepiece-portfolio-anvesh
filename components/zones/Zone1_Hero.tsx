@@ -29,6 +29,9 @@ export default function Zone1_Hero() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
+                        <p className="text-lg md:text-l text-white font-heading mb-3 tracking-widened">
+                            Frontend-focused engineering student crafting interactive, story-driven web experiences.
+                        </p>
                         {/* Logo replacing text */}
                         <img
                             src="/images/logo.webp"
@@ -45,8 +48,8 @@ export default function Zone1_Hero() {
                         className="border-l-4 border-gold pl-6 py-2"
                     >
                         {/* 'text-2xl' controls quote size */}
-                        <p className="text-1xl md:text-2xl font-heading italic text-white/90">
-                            "Sailing toward the version of myself I haven’t discovered yet."
+                        <p className="text-l md:text-xl font- baskerville text-white/90">
+                            "Learning in public, building relentlessly, and sailing toward real-world engineering."
                         </p>
                     </motion.div>
 
@@ -62,13 +65,13 @@ export default function Zone1_Hero() {
                             onClick={scrollToContact}
                             className="px-8 py-3 border border-gold text-gold font-bold rounded hover:bg-gold/10 transition-all"
                         >
-                            Contact Me
+                            Let’s Talk
                         </button>
                         <button
                             onClick={scrollToJourney}
                             className="px-8 py-3 bg-gold text-ocean-900 font-bold rounded hover:bg-gold-light transition-all transform hover:scale-110 -rotate-2 hover:rotate-0 flex items-center gap-2 font-heading text-xl shadow-lg hover:shadow-gold/50"
                         >
-                            <span>Swipe!</span>
+                            <span>Start the Journey</span>
                             <motion.span
                                 animate={{ x: [0, 5, 0], rotate: [0, 10, -10, 0] }}
                                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}

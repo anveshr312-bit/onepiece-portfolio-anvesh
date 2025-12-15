@@ -9,7 +9,7 @@ const gears = [
     {
         id: "GEAR 1",
         name: "Open-Mindedness",
-        desc: "Open to different ideas and perspectives.",
+        desc: "I actively seek feedback, consider alternative approaches, and adapt quickly when a better solution emerges.",
         image: "/images/gear 1.png",
         color: "from-blue-500 to-cyan-400",
         shadowColor: "#38bdf8",
@@ -18,7 +18,7 @@ const gears = [
     {
         id: "GEAR 2",
         name: "Empathy",
-        desc: "Understanding what others feel naturally.",
+        desc: "I try to understand users, teammates, and stakeholders before jumping to solutions, leading to more thoughtful and human-centered decisions.",
         image: "/images/gear 2.png",
         color: "from-red-500 to-pink-600",
         shadowColor: "#fb7185",
@@ -27,7 +27,7 @@ const gears = [
     {
         id: "GEAR 3",
         name: "Loyalty",
-        desc: "Sticking with the team through storms.",
+        desc: "I value consistency and responsibility, staying committed to the team and the work even when challenges slow things down.",
         image: "/images/gear 3.png",
         color: "from-orange-500 to-yellow-500",
         shadowColor: "#f97316",
@@ -36,7 +36,7 @@ const gears = [
     {
         id: "GEAR 4",
         name: "Creativity",
-        desc: "Turning ideas into expressive forms.",
+        desc: "I use creativity to simplify complex ideas, design engaging interfaces, and approach problems from unconventional angles.",
         image: "/images/gear 4.png",
         color: "from-purple-600 to-indigo-600",
         shadowColor: "#7c3aed",
@@ -45,7 +45,7 @@ const gears = [
     {
         id: "GEAR 5",
         name: "Freedom",
-        desc: "Living by values, not just expectations.",
+        desc: "I value autonomy and ownership, taking responsibility for my work while aligning with the goals and values of the team.",
         image: "/images/gear 5.png",
         color: "from-white to-yellow-200",
         shadowColor: "#fff9c4",
@@ -406,7 +406,8 @@ export default function Zone4_Gears() {
                             />
                         </h2>
                         <p className="text-white/90 text-sm md:text-base max-w-lg mx-auto font-medium drop-shadow-md">
-                            My strengths, embodied by the Gears.
+                            How my mindset and strengths shape the way I work.
+
                         </p>
 
                         {/* Timeline Indicator */}

@@ -13,7 +13,7 @@ export default function FloatingSunny() {
     // CONFIGURATION: Adjust these values to change the ship's path
     const SHIP_CONFIG = {
         START_X: "-2vw",      // Starting horizontal position
-        END_X: "85vw",        // Ending horizontal position
+        END_X: "100vw",        // Ending horizontal position
         START_BOTTOM: "-9rem", // Starting vertical position (from bottom)
         END_BOTTOM: "-9rem",   // Ending vertical position (from bottom)
     };

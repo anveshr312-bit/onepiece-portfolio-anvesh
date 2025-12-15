@@ -10,21 +10,21 @@ const poneglyphs = [
     {
         title: "Foundations",
         status: "Discovered",
-        text: "The early arcs: basic engineering concepts, exposure to IT, and learning how to think like a problem solver.",
+        text: "Core engineering concepts, logical thinking, and the mindset required to break problems into solvable parts. This is where I learned how engineers think.",
         color: "text-blue-400",
         borderColor: "border-blue-500/50"
     },
     {
         title: "Creativity",
         status: "Discovered",
-        text: "I sketch, paint, read, and write stories. Creativity is my most natural form of expression.",
+        text: "Visual thinking through sketching, storytelling, and design. I use creativity to make interfaces clearer, more engaging, and emotionally memorable.",
         color: "text-purple-400",
         borderColor: "border-purple-500/50"
     },
     {
         title: "Skills",
-        status: "Not Found Yet",
-        text: "Web development, problem solving, and building real projects. Still sailing toward these.",
+        status: "In Progress",
+        text: "Frontend development with React, animations, and interactive UI systems. Actively improving problem-solving through real projects and structured practice.",
         color: "text-gray-500",
         borderColor: "border-gray-700/50",
         dim: true
@@ -32,7 +32,7 @@ const poneglyphs = [
     {
         title: "My One Piece",
         status: "Uncharted",
-        text: "My dream role and the work I want to be known for. I haven’t discovered it yet, but I’m on my way.",
+        text: "The role where I combine strong frontend engineering, design sense, and storytelling to build meaningful digital experiences. Still uncharted, but clearly defined.",
         color: "text-red-900",
         borderColor: "border-red-900/30",
         dim: true
@@ -97,6 +97,7 @@ export default function Zone3_Poneglyphs() {
                             The Poneglyphs
                         </h2>
                         <p className="text-white/50 font-serif mt-2 text-center">Click a stone to decipher</p>
+                        <p className="text-m md:text-sm text-white/50 font-serif mt-1 text-center">Each Poneglyph represents a part of my learning and growth as an engineer</p>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -159,7 +160,7 @@ export default function Zone3_Poneglyphs() {
                                         transition={{ delay: 2.5 }}
                                         className="mt-8 p-4 bg-red-900/10 border border-red-900/30 rounded text-red-400/60 font-mono text-xs"
                                     >
-                                        // ENCRYPTED DATA // TRANSLATION INCOMPLETE //
+                                        // IN PROGRESS // LEARNING UNDERWAY //
                                     </motion.div>
                                 )}
                             </div>
