@@ -16,8 +16,8 @@ const projects = [
         description: "\"This project taught me how to think about user experience as a journey, not just a collection of screens. I focused on storytelling, interaction, and smooth navigation using modern frontend tools.\"",
         image: "/images/zone8/poster_frame.png",
         links: {
-            code: "https://github.com/anveshr312/onepiece-portfolio-anvesh",
-            live: "/"
+            code: "https://github.com/anveshr312-bit/onepiece-portfolio-anvesh",
+            live: "https://anveshrathore.netlify.app/"
         },
         logEntries: [
             {
