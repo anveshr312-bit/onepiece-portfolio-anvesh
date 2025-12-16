@@ -95,7 +95,7 @@ export default function Zone10_Contact() {
                         </div>
                     </form>
 
-                    <div className="flex flex-col sm:flex-row gap-6 mt-10">
+                    <div className="flex flex-col sm:flex-row gap-6 mt-8">
                         <a href="mailto:anveshr312@gmail.com" className="flex items-center gap-3 text-ocean-200 hover:text-gold transition-colors group">
                             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-gold/10 transition-colors">
                                 <Mail size={18} />
