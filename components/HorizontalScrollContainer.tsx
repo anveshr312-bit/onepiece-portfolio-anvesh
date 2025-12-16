@@ -72,6 +72,20 @@ export default function HorizontalScrollContainer({
         }
     }, []);
 
+    // --- Keyboard Navigation ---
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowRight") {
+                scrollToZone(currentZone + 1);
+            } else if (e.key === "ArrowLeft") {
+                scrollToZone(currentZone - 1);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [currentZone]);
+
     return (
         <ScrollContext.Provider value={{ scrollXProgress: smoothProgress, scrollToZone, currentZone }}>
             <div className="h-screen w-screen overflow-hidden bg-sky-300 relative">
