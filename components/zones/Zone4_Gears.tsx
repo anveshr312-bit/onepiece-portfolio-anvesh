@@ -266,7 +266,7 @@ export default function Zone4_Gears() {
 
     return (
         <section
-            className="w-screen h-screen flex-shrink-0 relative flex flex-col items-center justify-start pt-24 md:pt-28 overflow-hidden bg-[#C3EAF8]"
+            className="w-full h-screen flex-shrink-0 relative flex flex-col items-center justify-start pt-24 md:pt-28 overflow-hidden bg-[#C3EAF8]"
         >
             {/* Screen Shake Wrapper */}
             <motion.div className="absolute inset-0 w-full h-full will-change-transform" style={{ x: shakeX, y: shakeY }}>
@@ -278,7 +278,7 @@ export default function Zone4_Gears() {
                 {/* 1. Base Sky Gradient */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/zone4/amazonlily_sky_base.webp"
+                        src="/images/zone4/amazonlily_sky_base.png"
                         alt="Sky Background"
                         fill
                         className="object-cover"
@@ -293,7 +293,7 @@ export default function Zone4_Gears() {
                     transition={{ duration: 25, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
                 >
                     <Image
-                        src="/images/zone4/amazonlily_clouds_mid1.webp"
+                        src="/images/zone4/amazonlily_clouds_mid1.png"
                         alt="Clouds"
                         fill
                         className="object-cover opacity-50"
@@ -305,7 +305,7 @@ export default function Zone4_Gears() {
                     transition={{ duration: 35, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
                 >
                     <Image
-                        src="/images/zone4/amazonlily_clouds_mid2.webp"
+                        src="/images/zone4/amazonlily_clouds_mid2.png"
                         alt="Clouds"
                         fill
                         className="object-cover opacity-50"
@@ -315,7 +315,7 @@ export default function Zone4_Gears() {
                 {/* 3. Amazon Lily Silhouette (Static) */}
                 <div className="absolute bottom-0 left-0 right-0 h-[100%] z-40 pointer-events-none">
                     <Image
-                        src="/images/zone4/amazonlily_island_silhouette.webp"
+                        src="/images/zone4/amazonlily_island_silhouette.png"
                         alt="Amazon Lily"
                         fill
                         className="object-contain object-bottom opacity-70"
@@ -326,7 +326,7 @@ export default function Zone4_Gears() {
                 {/* 4. Water Reflection Strip */}
                 <div className="absolute bottom-0 left-0 right-0 h-[30%] z-25 pointer-events-none mix-blend-overlay opacity-60">
                     <Image
-                        src="/images/zone4/amazonlily_water_reflection.webp"
+                        src="/images/zone4/amazonlily_water_reflection.png"
                         alt="Water Reflection"
                         fill
                         className="object-cover object-bottom"
@@ -340,7 +340,7 @@ export default function Zone4_Gears() {
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 >
                     <Image
-                        src="/images/zone4/amazonlily_foreground_mist.webp"
+                        src="/images/zone4/amazonlily_foreground_mist.png"
                         alt="Mist"
                         fill
                         className="object-cover"

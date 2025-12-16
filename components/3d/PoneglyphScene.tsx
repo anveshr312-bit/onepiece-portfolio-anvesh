@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { GLTFLoader } from "three-stdlib";
+import { GLTFLoader, DRACOLoader } from "three-stdlib";
 
 
 // ==========================================
@@ -50,15 +50,29 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
         const scene = new THREE.Scene();
         scene.background = null;
 
+        const camera = new THREE.PerspectiveCamera(40, root.clientWidth / root.clientHeight, 0.1, 1000);
+        camera.position.set(0, 0, 8);
+
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setSize(root.clientWidth, root.clientHeight);
+        const initRendererSize = () => {
+            const w = root.clientWidth;
+            const h = root.clientHeight;
+
+            if (w === 0 || h === 0) {
+                requestAnimationFrame(initRendererSize);
+                return;
+            }
+
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+        };
+
+        initRendererSize();
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         renderer.setClearColor(0x000000, 0); // Force transparent background
         root.appendChild(renderer.domElement);
-
-        const camera = new THREE.PerspectiveCamera(40, root.clientWidth / root.clientHeight, 0.1, 1000);
-        camera.position.set(0, 0, 8);
 
         // Lighting
         const hemi = new THREE.HemisphereLight(0xffffff, 0x222222, 0.6);
@@ -78,11 +92,31 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
         // Load STL
         // Load GLB
         const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        // Use a stable CDN for Draco decoders
+        dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+        loader.setDRACOLoader(dracoLoader);
+
         const instances: THREE.Mesh[] = [];
 
-        loader.load('/models/red-poneglyph.glb', (gltf: any) => {
-            const mesh = gltf.scene.children[0] as THREE.Mesh;
-            const geometry = mesh.geometry;
+        loader.load('/models/red-poneglyph.glb', (gltf) => {
+            console.log("GLTF loaded:", gltf);
+            let geometry: THREE.BufferGeometry | null = null;
+
+            // 1. Try to find geometry in children
+            gltf.scene.traverse((child) => {
+                if ((child as THREE.Mesh).isMesh && !geometry) {
+                    geometry = (child as THREE.Mesh).geometry.clone();
+                    console.log("Found geometry:", geometry);
+                }
+            });
+
+            // 2. FALLBACK: Use a Box if no geometry found
+            if (!geometry) {
+                console.warn("No mesh found in GLB, using fallback BoxGeometry");
+                geometry = new THREE.BoxGeometry(1, 1, 1);
+            }
+
             geometry.computeBoundingBox();
             geometry.center();
             geometry.computeVertexNormals();
@@ -110,8 +144,29 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
                 scene.add(m);
                 instances.push(m);
             }
-        }, undefined, (err: any) => {
-            console.error('GLB load error', err);
+        }, undefined, (err) => {
+            console.error('GLB load error, using fallback:', err);
+
+            // ERROR FALLBACK: Create boxes if load fails entirely
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const mat = new THREE.MeshStandardMaterial({
+                color: 0xff0000, // Bright red for error
+                metalness: 0.0,
+                roughness: 0.5,
+            });
+
+            const prototype = new THREE.Mesh(geometry, mat);
+            prototype.scale.setScalar(SCENE_CONFIG.scale);
+
+            for (let i = 0; i < 4; i++) {
+                const m = prototype.clone();
+                m.material = mat.clone();
+                const [x, y, z] = SCENE_CONFIG.positions[i];
+                m.position.set(x, y, z);
+                m.userData = { id: i, hover: false, baseScale: 1.0 };
+                scene.add(m);
+                instances.push(m);
+            }
         });
 
         // Animation variables
@@ -276,5 +331,10 @@ export default function PoneglyphScene({ onSelect, selectedIndex, onHover }: Pon
         };
     }, []);
 
-    return <div ref={mountRef} className="w-full h-full cursor-pointer" />;
+    return (
+        <div
+            ref={mountRef}
+            className="w-full h-full min-h-[400px] cursor-pointer"
+        />
+    );
 }
