@@ -4,10 +4,10 @@ This guide details how to integrate the new Zone 5 animation variants and assets
 
 ## 1. Asset Placement
 Ensure the following assets are present in `public/images/zone5/upgrade/`:
-- `[elder]-base.png` (Base character images)
-- `[elder]-yokai.png` (Yokai form images)
-- `panel-frame.png` (Optional: CSS fallback is provided)
-- `panel-grain.png` (Optional: CSS fallback is provided)
+- `[elder]-base.webp` (Base character images)
+- `[elder]-yokai.webp` (Yokai form images)
+- `panel-frame.webp` (Optional: CSS fallback is provided)
+- `panel-grain.webp` (Optional: CSS fallback is provided)
 
 ## 2. Usage
 Import the `Zone5Card` component and use the `variant` prop to switch between animations.
@@ -18,8 +18,8 @@ import Zone5Card from '@/components/zones/Zone5_Upgrade/Zone5Card';
 // Example Usage
 <Zone5Card 
   variant="rise" // Options: "rise", "lunge", "pulse"
-  base="/images/zone5/upgrade/saturn-base.png"
-  yokai="/images/zone5/upgrade/saturn-yokai.png"
+  base="/images/zone5/upgrade/saturn-base.webp"
+  yokai="/images/zone5/upgrade/saturn-yokai.webp"
   name="SATURN"
   weakness="OVERTHINKING"
 />

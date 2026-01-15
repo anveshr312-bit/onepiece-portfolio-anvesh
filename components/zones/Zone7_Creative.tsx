@@ -28,11 +28,11 @@ const ZONE7_CONFIG = {
     // --- Background Assets ---
     backgrounds: {
         mainOcean: {
-            src: "/images/zone7/[BG-01].png",
+            src: "/images/zone7/[BG-01].webp",
             opacity: 0.9,
         },
         emblem: {
-            src: "/images/zone7/[EMB-01].png",
+            src: "/images/zone7/[EMB-01].webp",
             size: "w-64 h-64 md:w-96 md:h-96", // Increased size for background effect
             opacity: 0.15, // Lower opacity since it's now a background element
         }
@@ -47,10 +47,10 @@ const ZONE7_CONFIG = {
             description: "Sketching helps me visualize ideas early, explore layouts quickly, and communicate concepts before jumping into code.",
             icon: <PenTool className="w-8 h-8" />,
             assets: {
-                bg: "/images/zone7/[BG-02].png",
-                silhouette: "/images/zone7/Usopp Silhouette.png",
-                decor: "/images/zone7/[DECOR-01].png",
-                particles: "/images/zone7/FX-02A-Usopp.png",
+                bg: "/images/zone7/[BG-02].webp",
+                silhouette: "/images/zone7/Usopp Silhouette.webp",
+                decor: "/images/zone7/[DECOR-01].webp",
+                particles: "/images/zone7/FX-02A-Usopp.webp",
                 iconRef: "[ICO-01: Sketching]",
             },
             theme: {
@@ -77,10 +77,10 @@ const ZONE7_CONFIG = {
             description: "Reading expands my perspective, strengthens critical thinking, and improves how I understand users, stories, and complex ideas.",
             icon: <BookOpen className="w-8 h-8" />,
             assets: {
-                bg: "/images/zone7/[BG-03].png",
-                silhouette: "/images/zone7/Robin Silhouette.png",
-                decor: "/images/zone7/[DECOR-02].png",
-                particles: "/images/zone7/FX-02B-Robin.png",
+                bg: "/images/zone7/[BG-03].webp",
+                silhouette: "/images/zone7/Robin Silhouette.webp",
+                decor: "/images/zone7/[DECOR-02].webp",
+                particles: "/images/zone7/FX-02B-Robin.webp",
                 iconRef: "[ICO-02: Reading]",
             },
             theme: {
@@ -107,10 +107,10 @@ const ZONE7_CONFIG = {
             description: "Story writing sharpens my ability to structure ideas, create engaging narratives, and design experiences that feel coherent and meaningful. Yohoho!",
             icon: <Music className="w-8 h-8" />,
             assets: {
-                bg: "/images/zone7/[BG-04].png",
-                silhouette: "/images/zone7/Brook Silhouette.png",
-                decor: "/images/zone7/[DECOR-03].png",
-                particles: "/images/zone7/FX-02C-Brook.png",
+                bg: "/images/zone7/[BG-04].webp",
+                silhouette: "/images/zone7/Brook Silhouette.webp",
+                decor: "/images/zone7/[DECOR-03].webp",
+                particles: "/images/zone7/FX-02C-Brook.webp",
                 iconRef: "[ICO-03: Writing]",
             },
             theme: {
@@ -317,7 +317,7 @@ export default function Zone7_Creative() {
             {/* --- Foreground Ambient Particles [FX-01/02] --- */}
             <div className="absolute inset-0 z-[5] pointer-events-none">
                 <div className="absolute inset-0 opacity-40 bg-repeat animate-pulse">
-                    {/* <Image src="/images/zone7/[FX-01].png" alt="Particles" fill className="object-cover" /> */}
+                    {/* <Image src="/images/zone7/[FX-01].webp" alt="Particles" fill className="object-cover" /> */}
                 </div>
             </div>
 

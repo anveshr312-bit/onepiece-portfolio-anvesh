@@ -122,6 +122,8 @@ body {
   margin: 0;
   padding: 0;
   scroll-snap-type: x mandatory;
+  cursor: default;
+  /* Prevent typing cursor (I-beam) on text, inherits to all elements unless overridden */
 }
 
 .snap-center {

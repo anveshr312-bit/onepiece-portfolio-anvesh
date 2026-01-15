@@ -20,8 +20,8 @@ const ELDERS = [
         weaknessTitle: "Overthinking",
         weaknessDescription: "I tend to overanalyze situations, sometimes delaying action by exploring too many possibilities at once.",
         counterStrategy: "Bias toward action. Start small, gather feedback, and refine instead of waiting for certainty.",
-        baseImage: "/images/zone5/upgrade/saturn-base.png",
-        yokaiImage: "/images/zone5/upgrade/saturn-yokai.png",
+        baseImage: "/images/zone5/upgrade/saturn-base.webp",
+        yokaiImage: "/images/zone5/upgrade/saturn-yokai.webp",
     },
     {
         id: "juppeter",
@@ -29,8 +29,8 @@ const ELDERS = [
         weaknessTitle: "Avoiding Conflict",
         weaknessDescription: "I sometimes avoid difficult conversations to maintain harmony, which can delay necessary clarity.",
         counterStrategy: "Address issues early and respectfully. Clear communication prevents long-term friction.",
-        baseImage: "/images/zone5/upgrade/juppeter-base.png",
-        yokaiImage: "/images/zone5/upgrade/juppeter-yokai.png",
+        baseImage: "/images/zone5/upgrade/juppeter-base.webp",
+        yokaiImage: "/images/zone5/upgrade/juppeter-yokai.webp",
     },
     {
         id: "mars",
@@ -38,8 +38,8 @@ const ELDERS = [
         weaknessTitle: "Emotional Sensitivity",
         weaknessDescription: "I experience emotions deeply, which can sometimes affect focus if left unchecked.",
         counterStrategy: "Acknowledge emotions without letting them drive decisions. Build consistency through routine and reflection.",
-        baseImage: "/images/zone5/upgrade/mars-base.png",
-        yokaiImage: "/images/zone5/upgrade/mars-yokai.png",
+        baseImage: "/images/zone5/upgrade/mars-base.webp",
+        yokaiImage: "/images/zone5/upgrade/mars-yokai.webp",
     },
     {
         id: "nusjuro",
@@ -47,8 +47,8 @@ const ELDERS = [
         weaknessTitle: "Procrastination",
         weaknessDescription: "I can delay starting tasks when motivation is low, even when priorities are clear.",
         counterStrategy: "Use the 5-minute rule to break inertia. Starting small consistently builds momentum.",
-        baseImage: "/images/zone5/upgrade/nusjuro-base.png",
-        yokaiImage: "/images/zone5/upgrade/nusjuro-yokai.png",
+        baseImage: "/images/zone5/upgrade/nusjuro-base.webp",
+        yokaiImage: "/images/zone5/upgrade/nusjuro-yokai.webp",
     },
     {
         id: "warcury",
@@ -56,8 +56,8 @@ const ELDERS = [
         weaknessTitle: "Indecision",
         weaknessDescription: "When faced with too many options, I can hesitate while weighing outcomes too carefully.",
         counterStrategy: "Limit options, commit to a direction, and adjust based on results. Progress beats perfection.",
-        baseImage: "/images/zone5/upgrade/warcury-base.png",
-        yokaiImage: "/images/zone5/upgrade/warcury-yokai.png",
+        baseImage: "/images/zone5/upgrade/warcury-base.webp",
+        yokaiImage: "/images/zone5/upgrade/warcury-yokai.webp",
     },
 ];
 
@@ -65,7 +65,7 @@ export default function Zone5_Challenges() {
     return (
         <section className="relative w-screen h-screen overflow-hidden bg-black flex items-center justify-center">
             {/* Background layers */}
-            <Image src="/images/zone5/throne-room.png" alt="Throne Room" fill className="object-cover object-center opacity-70" priority />
+            <Image src="/images/zone5/throne-room.webp" alt="Throne Room" fill className="object-cover object-center opacity-70" priority />
 
             {/* Light Beams */}
             <div className="absolute inset-0 z-10 pointer-events-none opacity-50 mix-blend-screen">

@@ -35,9 +35,9 @@ const ISLANDS: IslandData[] = [
         theme: "Confidence",
         desc: "Developing confidence by staying calm under uncertainty, making decisions without panic, and focusing on clarity over noise.",
         quote: "Panic is the enemy. Confidence is the anchor.",
-        mapImg: "/images/zone6/island_shanks.png",
-        sceneImg: "/images/zone6/scene_shanks.png",
-        charImg: "/images/zone6/char_shanks.png",
+        mapImg: "/images/zone6/island_shanks.webp",
+        sceneImg: "/images/zone6/scene_shanks.webp",
+        charImg: "/images/zone6/char_shanks.webp",
         icon: Anchor,
         x: "15%",
         y: "65%",
@@ -51,9 +51,9 @@ const ISLANDS: IslandData[] = [
         theme: "Discipline",
         desc: "Building discipline through planning, consistency, and showing up daily, even when motivation fades.",
         quote: "A plan without action is just a dream.",
-        mapImg: "/images/zone6/island_sabo.png",
-        sceneImg: "/images/zone6/scene_sabo.png",
-        charImg: "/images/zone6/char_sabo.png",
+        mapImg: "/images/zone6/island_sabo.webp",
+        sceneImg: "/images/zone6/scene_sabo.webp",
+        charImg: "/images/zone6/char_sabo.webp",
         icon: Book,
         x: "30%",
         y: "35%",
@@ -67,9 +67,9 @@ const ISLANDS: IslandData[] = [
         theme: "Passion",
         desc: "Learning to channel passion productively, balancing ambition and energy without burning out over time.",
         quote: "Live a life with no regrets.",
-        mapImg: "/images/zone6/island_ace.png",
-        sceneImg: "/images/zone6/scene_ace.png",
-        charImg: "/images/zone6/char_ace.png",
+        mapImg: "/images/zone6/island_ace.webp",
+        sceneImg: "/images/zone6/scene_ace.webp",
+        charImg: "/images/zone6/char_ace.webp",
         icon: Flame,
         x: "50%",
         y: "55%",
@@ -83,9 +83,9 @@ const ISLANDS: IslandData[] = [
         theme: "Mastery",
         desc: "Focusing on technical depth by strengthening fundamentals, refining skills, and understanding concepts beyond surface-level usage.",
         quote: "Haki blooms in the heat of battle.",
-        mapImg: "/images/zone6/island_rayleigh.png",
-        sceneImg: "/images/zone6/scene_rayleigh.png",
-        charImg: "/images/zone6/char_rayleigh.png",
+        mapImg: "/images/zone6/island_rayleigh.webp",
+        sceneImg: "/images/zone6/scene_rayleigh.webp",
+        charImg: "/images/zone6/char_rayleigh.webp",
         icon: Sword,
         x: "70%",
         y: "25%",
@@ -99,9 +99,9 @@ const ISLANDS: IslandData[] = [
         theme: "Craft",
         desc: "Improving craftsmanship through focused practice, attention to detail, and respect for clean, well-built work.",
         quote: "Every strike shapes the future.",
-        mapImg: "/images/zone6/island_gaban.png",
-        sceneImg: "/images/zone6/scene_gaban.png",
-        charImg: "/images/zone6/char_gaban.png",
+        mapImg: "/images/zone6/island_gaban.webp",
+        sceneImg: "/images/zone6/scene_gaban.webp",
+        charImg: "/images/zone6/char_gaban.webp",
         icon: Hammer,
         x: "85%",
         y: "60%",
@@ -152,7 +152,7 @@ function MapView({ onSelect }: { onSelect: (i: IslandData) => void }) {
             {/* 1. Map Background */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/zone6/map_bg_v2.png" // Updated to Cartography style
+                    src="/images/zone6/map_bg_v2.webp" // Updated to Cartography style
                     alt="World Map"
                     fill
                     className="object-cover"
@@ -160,7 +160,7 @@ function MapView({ onSelect }: { onSelect: (i: IslandData) => void }) {
                 />
                 {/* Vignette & Texture Overlay */}
                 <div className="absolute inset-0 bg-black/20 pointer-events-none mix-blend-multiply" />
-                <div className="absolute inset-0 bg-[url('/textures/paper-grain.png')] opacity-30 mix-blend-overlay pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('/textures/paper-grain.webp')] opacity-30 mix-blend-overlay pointer-events-none" />
             </div>
 
             {/* 2. Route & Ship (SVG) */}
@@ -194,7 +194,7 @@ function MapView({ onSelect }: { onSelect: (i: IslandData) => void }) {
                     {/* Ship Animation */}
                     <g>
                         <image
-                            href="/images/zone6/ship.png"
+                            href="/images/zone6/ship.webp"
                             width="150"
                             height="150"
                             x="-75"

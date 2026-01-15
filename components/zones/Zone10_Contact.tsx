@@ -30,7 +30,7 @@ export default function Zone10_Contact() {
             {/* Background Image */}
             <div className="absolute inset-0">
                 <img
-                    src="/images/zone10bg.png"
+                    src="/images/zone10bg.webp"
                     alt="contact background"
                     className="w-full h-full object-cover"
                 />

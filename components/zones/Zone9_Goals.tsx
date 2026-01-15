@@ -18,7 +18,7 @@ const CONFIG = {
             opacity: 0.8
         },
         background: {
-            src: "/images/zone9/zone9-bg.png",
+            src: "/images/zone9/zone9-bg.webp",
             blur: "3px", // CSS blur value
             scale: 1.06,
             overlayGradient: "radial-gradient(circle at center, transparent 0%, #083e57 100%)",
@@ -59,7 +59,7 @@ const CONFIG = {
             innerSize: "80%", // Size of the inner square relative to circle
             borderRadius: "12px", // CSS Value
             gif: "/images/zone9/cookingsanji.gif",
-            overlayFx: "/images/zone9/node0-sanji-fx.png",
+            overlayFx: "/images/zone9/node0-sanji-fx.webp",
             overlayOpacity: 0.8,
             borderColor: "rgba(244, 233, 214, 0.1)" // #F4E9D6/10
         }
@@ -83,8 +83,8 @@ const CONFIG = {
         // INTERNAL ELEMENTS
         content: {
             innerSize: "80%",
-            img: "/images/zone9/lostzoro.png",
-            overlayFx: "/images/zone9/node1-zoro-fx.png",
+            img: "/images/zone9/lostzoro.webp",
+            overlayFx: "/images/zone9/node1-zoro-fx.webp",
             overlayScale: 0.9,
             borderColor: "rgba(87, 192, 106, 0.15)", // #57C06A/15
             blinkAnimation: {
@@ -115,25 +115,25 @@ const CONFIG = {
             shadow: "0 0 60px rgba(216, 168, 74, 0.3)",
             // Layout: Left (Island) | Right (Nami)
             island: {
-                src: "/images/zone9/laughtale-island.png",
+                src: "/images/zone9/laughtale-island.webp",
                 scale: 0.9,
                 position: "object-middle", // CSS object-position
                 pos: { top: 50, left: 40 }
             },
             nami: {
-                src: "/images/zone9/nami.png",
+                src: "/images/zone9/nami.webp",
                 scale: 0.9, // Scale usually 1, but we use strict styling
                 marginBottom: "-8px", // -mb-2 equivalent
                 pos: { top: 70, left: 80 }
             },
             sparkles: {
-                src: "/images/zone9/sparkalingstars.png",
+                src: "/images/zone9/sparkalingstars.webp",
                 size: 30, // px (w-6 h-6)
                 top: 70, // -top-2
                 right: 70 // right-2
             },
             coins: {
-                src: "/images/zone9/node3-berry-coin-variations.png",
+                src: "/images/zone9/node3-berry-coin-variations.webp",
                 count: 3
             }
         }
@@ -256,7 +256,7 @@ export default function Zone9_Goals() {
                         />
                     </svg>
                     {/* Animated Arrows (keeping specific implementation hidden or hardcoded usually fine, but strictly not 'configurable' unless exposed) */}
-                    {/* Simplified arrow logic for cleaner code, hardcoded 'rope-arrow.png' usage here for now unless user asks deeper */}
+                    {/* Simplified arrow logic for cleaner code, hardcoded 'rope-arrow.webp' usage here for now unless user asks deeper */}
                 </div>
 
 

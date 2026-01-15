@@ -22,8 +22,8 @@ const PANELS: Panel[] = [
         weaknessTitle: "OVERTHINKING",
         weaknessDescription: "I tend to overanalyze situations, sometimes delaying action by exploring too many possibilities at once.",
         counterStrategy: "Bias toward action. Start small, gather feedback, and refine instead of waiting for certainty.",
-        baseImage: "/images/zone5/upgrade/saturn-base.png",
-        yokaiImage: "/images/zone5/upgrade/saturn-yokai.png",
+        baseImage: "/images/zone5/upgrade/saturn-base.webp",
+        yokaiImage: "/images/zone5/upgrade/saturn-yokai.webp",
     },
     {
         id: "mars",
@@ -31,8 +31,8 @@ const PANELS: Panel[] = [
         weaknessTitle: "EMOTIONAL SENSITIVITY",
         weaknessDescription: "I experience emotions deeply, which can sometimes affect focus if left unchecked.",
         counterStrategy: "Acknowledge emotions without letting them drive decisions. Build consistency through routine and reflection.",
-        baseImage: "/images/zone5/upgrade/mars-base.png",
-        yokaiImage: "/images/zone5/upgrade/mars-yokai.png",
+        baseImage: "/images/zone5/upgrade/mars-base.webp",
+        yokaiImage: "/images/zone5/upgrade/mars-yokai.webp",
     },
     {
         id: "warcury",
@@ -40,8 +40,8 @@ const PANELS: Panel[] = [
         weaknessTitle: "INDECISION",
         weaknessDescription: "When faced with too many options, I can hesitate while weighing outcomes too carefully.",
         counterStrategy: "Limit options, commit to a direction, and adjust based on results. Progress beats perfection.",
-        baseImage: "/images/zone5/upgrade/warcury-base.png",
-        yokaiImage: "/images/zone5/upgrade/warcury-yokai.png",
+        baseImage: "/images/zone5/upgrade/warcury-base.webp",
+        yokaiImage: "/images/zone5/upgrade/warcury-yokai.webp",
     },
     {
         id: "nusjuro",
@@ -49,8 +49,8 @@ const PANELS: Panel[] = [
         weaknessTitle: "PROCRASTINATION",
         weaknessDescription: "I can delay starting tasks when motivation is low, even when priorities are clear.",
         counterStrategy: "Use the 5-minute rule to break inertia. Starting small consistently builds momentum.",
-        baseImage: "/images/zone5/upgrade/nusjuro-base.png",
-        yokaiImage: "/images/zone5/upgrade/nusjuro-yokai.png",
+        baseImage: "/images/zone5/upgrade/nusjuro-base.webp",
+        yokaiImage: "/images/zone5/upgrade/nusjuro-yokai.webp",
     },
     {
         id: "juppeter",
@@ -58,8 +58,8 @@ const PANELS: Panel[] = [
         weaknessTitle: "AVOIDING CONFLICT",
         weaknessDescription: "I sometimes avoid difficult conversations to maintain harmony, which can delay necessary clarity.",
         counterStrategy: "Address issues early and respectfully. Clear communication prevents long-term friction.",
-        baseImage: "/images/zone5/upgrade/juppeter-base.png",
-        yokaiImage: "/images/zone5/upgrade/juppeter-yokai.png",
+        baseImage: "/images/zone5/upgrade/juppeter-base.webp",
+        yokaiImage: "/images/zone5/upgrade/juppeter-yokai.webp",
     },
 ];
 
@@ -93,7 +93,7 @@ export default function Zone5_CharacterPanels() {
             {/* Unified Background: Council Chamber Atmosphere */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/zone5/throne-room.png"
+                    src="/images/zone5/throne-room.webp"
                     alt="Throne Room"
                     fill
                     className="object-cover object-center opacity-60"
@@ -105,7 +105,7 @@ export default function Zone5_CharacterPanels() {
 
                 {/* Ambient Fog/Smoke */}
                 <div className="absolute inset-0 opacity-15 mix-blend-screen">
-                    <Image src="/images/zone5/character-panels/fog-overlay-top.png" alt="fog" fill className="object-cover animate-drift-slow" />
+                    <Image src="/images/zone5/character-panels/fog-overlay-top.webp" alt="fog" fill className="object-cover animate-drift-slow" />
                 </div>
             </div>
 

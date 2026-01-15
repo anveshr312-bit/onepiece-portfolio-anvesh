@@ -26,7 +26,7 @@ export default function Zone2_Prologue() {
             <div className="absolute inset-0 z-0">
                 {/* Background Image - Fully Visible */}
                 <Image
-                    src="/images/prologue-bg.png"
+                    src="/images/prologue-bg.webp"
                     alt="Prologue BG"
                     fill
                     className="object-cover"
@@ -44,14 +44,14 @@ export default function Zone2_Prologue() {
                     animate={{ x: ["-5%", "5%"] }}
                     transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
                 >
-                    <Image src="/images/fog1.png" alt="Fog" fill className="object-cover" />
+                    <Image src="/images/fog1.webp" alt="Fog" fill className="object-cover" />
                 </motion.div>
                 <motion.div
                     className="absolute inset-0 opacity-30 mix-blend-screen"
                     animate={{ x: ["5%", "-5%"] }}
                     transition={{ duration: 25, repeat: Infinity, repeatType: "reverse" }}
                 >
-                    <Image src="/images/fog2.png" alt="Fog" fill className="object-cover" />
+                    <Image src="/images/fog2.webp" alt="Fog" fill className="object-cover" />
                 </motion.div>
             </div>
 

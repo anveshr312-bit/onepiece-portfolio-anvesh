@@ -20,7 +20,7 @@ export default function VariantRise({ base, yokai, name, weakness, isActive }: V
             whileFocus="hover"
             animate={isActive ? "hover" : "idle"}
         >
-            {/* Card Frame (CSS Fallback for panel-frame.png) */}
+            {/* Card Frame (CSS Fallback for panel-frame.webp) */}
             <div className="absolute inset-0 z-10 border border-white/10 bg-gradient-to-b from-white/5 to-black/90 backdrop-blur-[1px] rounded-xl overflow-hidden group-hover:border-yellow-500/30 transition-colors duration-500">
                 {/* Grain Overlay */}
                 <div className="absolute inset-0 opacity-[0.03] bg-[url('/images/noise.svg')] mix-blend-overlay pointer-events-none" />

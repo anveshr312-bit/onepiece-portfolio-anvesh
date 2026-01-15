@@ -18,7 +18,7 @@ export default function Zone1_Hero() {
     return (
         <section className="w-screen h-screen flex-shrink-0 relative flex items-center justify-center overflow-hidden bg-ocean-deep">
             {/* Background Elements */}
-            <div className="absolute inset-0 bg-[url('/placeholder-sky.jpg')] bg-cover bg-center opacity-20" />
+            <div className="absolute inset-0 bg-[url('/placeholder-sky.webp')] bg-cover bg-center opacity-20" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-ocean-deep" />
 
             <div className="container mx-auto px-6 z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -88,7 +88,7 @@ export default function Zone1_Hero() {
                     {/* This area is for the large ship illustration or character art */}
                     <div className="w-96 h-96 rounded-full bg-gradient-radial from-ocean-400/20 to-transparent blur-2xl absolute" />
                     {/* Placeholder for user to add image */}
-                    {/* <img src="/path/to/ship.png" alt="Thousand Sunny" className="relative z-10 animate-float" /> */}
+                    {/* <img src="/path/to/ship.webp" alt="Thousand Sunny" className="relative z-10 animate-float" /> */}
                 </div>
             </div>
         </section>

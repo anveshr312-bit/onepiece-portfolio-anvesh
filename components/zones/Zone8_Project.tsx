@@ -14,7 +14,7 @@ const projects = [
         version: "Portfolio V1",
         bounty: "1,500,000,000",
         description: "\"This project taught me how to think about user experience as a journey, not just a collection of screens. I focused on storytelling, interaction, and smooth navigation using modern frontend tools.\"",
-        image: "/images/zone8/poster_frame.png",
+        image: "/images/zone8/poster_frame.webp",
         links: {
             code: "https://github.com/anveshr312-bit/onepiece-portfolio-anvesh",
             live: "https://anvesh-rathore-portfolio.pages.dev",
@@ -43,7 +43,7 @@ const projects = [
         version: "Unidentified",
         bounty: "???",
         description: "An upcoming project currently in the planning phase. This space is reserved for an idea I want to execute with stronger fundamentals, clearer scope, and real-world usefulness.",
-        image: "/images/zone8/wanted_poster_1.png",
+        image: "/images/zone8/wanted_poster_1.webp",
         links: {
             code: null,
             live: null,
@@ -73,7 +73,7 @@ const projects = [
         version: "Top Secret",
         bounty: "???",
         description: "A future experimental project reserved for when my skills mature further. Intended to push beyond comfort zones and explore more complex ideas.",
-        image: "/images/zone8/wanted_poster_2.png",
+        image: "/images/zone8/wanted_poster_2.webp",
         links: {
             code: null,
             live: null,
@@ -120,7 +120,7 @@ export default function Zone8_Project() {
             {/* Background Layer */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/zone8/background.png"
+                    src="/images/zone8/background.webp"
                     alt="Marine Archive Background"
                     fill
                     className="object-cover opacity-60"
@@ -223,7 +223,7 @@ export default function Zone8_Project() {
                         {/* Static Background Layer (to prevent empty space during flip) */}
                         <div className="absolute inset-0 z-0 shadow-2xl rounded-sm transform lg:rotate-1">
                             <Image
-                                src="/images/zone8/ship_log_parchment.png"
+                                src="/images/zone8/ship_log_parchment.webp"
                                 alt=""
                                 fill
                                 className="object-fill opacity-100 mix-blend-multiply rounded-sm"
@@ -242,7 +242,7 @@ export default function Zone8_Project() {
                                 {/* Active Page Content */}
                                 <div className="absolute inset-0 z-0">
                                     <Image
-                                        src="/images/zone8/ship_log_parchment.png"
+                                        src="/images/zone8/ship_log_parchment.webp"
                                         alt=""
                                         fill
                                         className="object-fill opacity-100 mix-blend-multiply rounded-sm"
